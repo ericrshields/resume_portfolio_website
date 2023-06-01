@@ -1,113 +1,280 @@
-import Image from 'next/image'
+'use client';
+
+import Image from "next/image";
+
+import pic from "../assets/img/pic.png"
+import projectPic1 from "../assets/img/project1.jpg"
+import projectPic2 from "../assets/img/project2.jpg"
+import projectPic3 from "../assets/img/project3.jpg"
+import projectPic4 from "../assets/img/project4.jpg"
+import projectPic5 from "../assets/img/project5.jpg"
 
 export default function Home() {
+  // /*=============== FILTERS TABS ===============*/
+  // const tabs = document.querySelectorAll('[data-target]'),
+  //     tabContents = document.querySelectorAll('[data-content]')
+  //
+  // tabs.forEach(tab =>{
+  //   tab.addEventListener('click', () =>{
+  //     const target = document.querySelector(tab.dataset.target)
+  //
+  //     tabContents.forEach(tc =>{
+  //       tc.classList.remove('filters__active')
+  //     })
+  //     target.classList.add('filters__active')
+  //
+  //     tabs.forEach(t =>{
+  //       t.classList.remove('filter-tab-active')
+  //     })
+  //     tab.classList.add('filter-tab-active')
+  //   })
+  // })
+  //
+  // /*=============== DARK LIGHT THEME ===============*/
+  // const themeButton = document.getElementById('theme-button')
+  // const darkTheme = 'dark-theme'
+  // const iconTheme = 'ri-sun-line'
+  //
+  // // Previously selected topic (if user selected)
+  // const selectedTheme = localStorage.getItem('selected-theme')
+  // const selectedIcon = localStorage.getItem('selected-icon')
+  //
+  // // We obtain the current theme that the interface has by validating the dark-theme class
+  // const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+  // const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
+  //
+  // // We validate if the user previously chose a topic
+  // if (selectedTheme) {
+  //   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+  //   document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+  //   themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+  // }
+  //
+  // // Activate / deactivate the theme manually with the button
+  // themeButton.addEventListener('click', () => {
+  //   // Add or remove the dark / icon theme
+  //   document.body.classList.toggle(darkTheme)
+  //   themeButton.classList.toggle(iconTheme)
+  //   // We save the theme and the current icon that the user chose
+  //   localStorage.setItem('selected-theme', getCurrentTheme())
+  //   localStorage.setItem('selected-icon', getCurrentIcon())
+  // })
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header className="profile container">
+        <i className="ri-moon-line change-theme" id="theme-button">Change theme</i>
+
+        <div className="profile__container grid">
+          <div className="profile__data">
+            <div className="profile__border">
+              <div className="profile__perfil">
+
+                <Image src={pic} alt="" />
+              </div>
+            </div>
+
+            <h2 className="profile__name">Vaibhav Tomar</h2>
+            <h3 className="profile__profession">Aspiring  Developer</h3>
+
+            <ul className="profile__social">
+              <a href="@/app/page" target="_blank" className="profile__social-link">
+                <i className="ri-linkedin-box-line"></i>
+              </a>
+              <a href="https://github.com/vaibhavtomar04" target="_blank" className="profile__social-link">
+                <i className="ri-github-line"></i>
+              </a>
+            </ul>
+          </div>
+
+          <div className="profile__info grid">
+            <div className="profile__info-group">
+              <h3 className="profile__info-number">1</h3>
+              <p className="profile__info-description">
+                Years of <br /> work
+              </p>
+            </div>
+            <div className="profile__info-group">
+              <h3 className="profile__info-number">0</h3>
+              <p className="profile__info-description">
+                Completed <br /> projects
+              </p>
+            </div>
+            <div className="profile__info-group">
+              <h3 className="profile__info-number">0</h3>
+              <p className="profile__info-description">Satisfied <br /> customers</p>
+            </div>
+          </div>
+
+          <div className="profile__buttons">
+            <a download="" href="assets/pdf/Vaibhavtomar_resume.pdf" className="button">
+              Download CV <i className="ri-download-line"></i>
+            </a>
+
+            <div className="profile__buttons-small">
+
+              <a href="https://api.whatsapp.com/send?phone=+919999999999&text=Hello, more information!" target="_blank" className="button button__small button__gray">
+                <i className="ri-whatsapp-line"></i>
+              </a>
+              <a href="https://m.me/vaibhav" target="_blank" className="button button__small button__gray">
+                <i className="ri-messenger-line"></i>
+              </a>
+
+            </div>
+          </div>
         </div>
-      </div>
+      </header>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <main className="main">
+        <section className="filters container">
+          <ul className="filters__content">
+            <button className="filters__button filter-tab-active" data-target="#projects">
+              Projects
+            </button>
+            <button className="filters__button" data-target="#skills">
+              Skills
+            </button>
+          </ul>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+          <div className="filters__sections">
+            <div className="projects__content grid filters__active" data-content="" id="projects">
+              <article className="projects__card">
+                <Image src={projectPic1} alt="" className="projects__img" />
+
+                  <div className="projects__modal">
+                    <div>
+                      <span className="projects__subtitle">CMS</span>
+                      <h3 className="projects__title">College Management System</h3>
+                      <a href="https://github.com/vaibhavtomar04/College_management_system_java" className="projects__button button button__small">
+                        <i className="ri-link"></i>
+                      </a>
+                    </div>
+                  </div>
+              </article>
+
+              <article className="projects__card">
+                <Image src={projectPic2} alt="" className="projects__img" />
+
+                  <div className="projects__modal">
+                    <div>
+                      <span className="projects__subtitle">Web</span>
+                      <h3 className="projects__title">Responsive Website</h3>
+                      <a href="https://github.com/vaibhavtomar04/InteriorDesignsWebsite" className="projects__button button button__small">
+                        <i className="ri-link"></i>
+                      </a>
+                    </div>
+                  </div>
+              </article>
+
+              <article className="projects__card">
+                <Image src={projectPic3} alt="" className="projects__img" />
+
+                  <div className="projects__modal">
+                    <div>
+                      <span className="projects__subtitle">sample</span>
+                      <h3 className="projects__title">Empty</h3>
+                      <a href="@/app/page#" className="projects__button button button__small">
+                        <i className="ri-link"></i>
+                      </a>
+                    </div>
+                  </div>
+              </article>
+
+              <article className="projects__card">
+                <Image src={projectPic4} alt="" className="projects__img" />
+
+                  <div className="projects__modal">
+                    <div>
+                      <span className="projects__subtitle">sample</span>
+                      <h3 className="projects__title">Empty</h3>
+                      <a href="@/app/page#" className="projects__button button button__small">
+                        <i className="ri-link"></i>
+                      </a>
+                    </div>
+                  </div>
+              </article>
+
+              <article className="projects__card">
+                <Image src={projectPic5} alt="" className="projects__img" />
+
+                  <div className="projects__modal">
+                    <div>
+                      <span className="projects__subtitle">sample</span>
+                      <h3 className="projects__title">Empty</h3>
+                      <a href="@/app/page#" className="projects__button button button__small">
+                        <i className="ri-link"></i>
+                      </a>
+                    </div>
+                  </div>
+              </article>
+            </div>
+
+            <div className="skills__content grid" data-content="" id="skills">
+              <div className="skills__area">
+                <h3 className="skills__title">Frontend Developer</h3>
+
+                <div className="skills__box">
+                  <div className="skills__group">
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">HTML</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">CSS</h3>
+                        <span className="skills__level">Intermediate</span>
+                      </div>
+                    </div>
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">JavaScript</h3>
+                        <span className="skills__level">Basic</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="skills__area">
+                <h3 className="skills__title">Backend Developer</h3>
+
+                <div className="skills__box">
+                  <div className="skills__group">
+
+                    <div className="skills__data">
+                      <i className="ri-checkbox-circle-line"></i>
+
+                      <div>
+                        <h3 className="skills__name">MySQL</h3>
+                        <span className="skills__level">Advance</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer container">
+            <span className="footer__copy">
+                &#169; Eric Shields. All rights reserved
             </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </footer>
+    </>
   )
 }
