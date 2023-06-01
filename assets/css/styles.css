@@ -1,6 +1,3 @@
-/*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
 /*=============== VARIABLES CSS ===============*/
 :root {
   /*========== Colors ==========*/
@@ -100,8 +97,8 @@ body.dark-theme {
   --container-color: hsl(var(--hue), 24%, 12%);
 }
 
-/*========== 
-    Color changes in some parts of 
+/*==========
+    Color changes in some parts of
     the website, in light theme
 ==========*/
 .dark-theme .button__gray {
@@ -158,8 +155,8 @@ body.dark-theme {
 .profile__perfil {
   width: 100px;
   height: 100px;
-  background: linear-gradient(180deg, 
-              hsla(var(--hue), var(--sat), var(--lig), 1) 0%, 
+  background: linear-gradient(180deg,
+              hsla(var(--hue), var(--sat), var(--lig), 1) 0%,
               hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
   border-radius: 50%;
   overflow: hidden;
@@ -230,7 +227,7 @@ body.dark-theme {
   font-weight: 500;
 }
 
-.profile__buttons, 
+.profile__buttons,
 .profile__buttons-small {
   display: flex;
   align-items: center;
@@ -328,8 +325,8 @@ body.dark-theme {
   height: 100%;
   bottom: -100%;
   left: 0;
-  background: linear-gradient(180deg, 
-              hsla(var(--hue), 24%, 40%, .3) 0%, 
+  background: linear-gradient(180deg,
+              hsla(var(--hue), 24%, 40%, .3) 0%,
               hsla(var(--hue), 24%, 4%, 1) 95%);
   display: grid;
   align-items: flex-end;
@@ -337,7 +334,7 @@ body.dark-theme {
   transition: .3s;
 }
 
-.projects__subtitle, 
+.projects__subtitle,
 .projects__title {
   color: #fff;
 }
