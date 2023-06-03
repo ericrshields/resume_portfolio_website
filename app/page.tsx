@@ -11,58 +11,40 @@ import projectPic5 from "../assets/img/project5.jpg"
 import Profile from "@/components/profile";
 import Project, { IProject } from "@/components/project";
 import SkillGroup, { ISkillGroup } from "@/components/skillGroup";
+import { useState } from "react";
+
+const MAGIC_STRINGS = {
+    DARK_THEME: "dark-theme",
+    LIGHT_THEME: "light-theme",
+    SELECTED_THEME: "selected-theme",
+}
 
 export default function Page() {
-    // /*=============== FILTERS TABS ===============*/
-    // const tabs = document.querySelectorAll('[data-target]'),
-    //     tabContents = document.querySelectorAll('[data-content]')
-    //
-    // tabs.forEach(tab =>{
-    //   tab.addEventListener('click', () =>{
-    //     const target = document.querySelector(tab.dataset.target)
-    //
-    //     tabContents.forEach(tc =>{
-    //       tc.classList.remove('filters__active')
-    //     })
-    //     target.classList.add('filters__active')
-    //
-    //     tabs.forEach(t =>{
-    //       t.classList.remove('filter-tab-active')
-    //     })
-    //     tab.classList.add('filter-tab-active')
-    //   })
-    // })
-    //
-    // /*=============== DARK LIGHT THEME ===============*/
-    // const themeButton = document.getElementById('theme-button')
-    // const darkTheme = 'dark-theme'
-    // const iconTheme = 'ri-sun-line'
-    //
-    // // Previously selected topic (if user selected)
-    // const selectedTheme = localStorage.getItem('selected-theme')
-    // const selectedIcon = localStorage.getItem('selected-icon')
-    //
-    // // We obtain the current theme that the interface has by validating the dark-theme class
-    // const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-    // const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
-    //
-    // // We validate if the user previously chose a topic
-    // if (selectedTheme) {
-    //   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-    //   document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-    //   themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
-    // }
-    //
-    // // Activate / deactivate the theme manually with the button
-    // themeButton.addEventListener('click', () => {
-    //   // Add or remove the dark / icon theme
-    //   document.body.classList.toggle(darkTheme)
-    //   themeButton.classList.toggle(iconTheme)
-    //   // We save the theme and the current icon that the user chose
-    //   localStorage.setItem('selected-theme', getCurrentTheme())
-    //   localStorage.setItem('selected-icon', getCurrentIcon())
-    // })
+    // Theme handling
+    const [ selectedTheme, setSelectedTheme ] = useState(localStorage.getItem('selected-theme') || "dark-theme");
+    const themeIconClass = selectedTheme === MAGIC_STRINGS.LIGHT_THEME ? "ri-sun-line" : "ri-moon-line";
+    const themeHandler = () => {
+        if (selectedTheme === MAGIC_STRINGS.DARK_THEME) {
+            setSelectedTheme(MAGIC_STRINGS.LIGHT_THEME);
+            localStorage.setItem(MAGIC_STRINGS.SELECTED_THEME, MAGIC_STRINGS.LIGHT_THEME);
 
+            // Updating the body class requires a different approach, since moving this code into layout.tsx
+            // would require making the core layout a Client component, which causes other issues
+            document.body.classList.replace(MAGIC_STRINGS.DARK_THEME, MAGIC_STRINGS.LIGHT_THEME);
+        } else {
+            setSelectedTheme(MAGIC_STRINGS.DARK_THEME);
+            localStorage.setItem(MAGIC_STRINGS.SELECTED_THEME, MAGIC_STRINGS.DARK_THEME);
+            document.body.classList.replace(MAGIC_STRINGS.LIGHT_THEME, MAGIC_STRINGS.DARK_THEME);
+        }
+    }
+
+    // Tab handling
+    const [ activeTab, setActiveTab ] = useState();
+    const tabHandler = () => {
+
+    };
+
+    // Create Projects and Skills from locale strings
     const projStrs: IProject[]  = strings.projects;
     const skillGroupStrs: ISkillGroup[] = strings.skills;
 
@@ -83,17 +65,17 @@ export default function Page() {
         return (
             <SkillGroup key={index} title={skillGroup.title} skills={skillGroup.skills} />
         );
-    })
+    });
 
     return (
         <>
-            <i className="ri-moon-line change-theme" id="theme-button">{strings.changeTheme}</i>
+            <i className={`${themeIconClass} change-theme`} onClick={themeHandler}>{strings.changeTheme}</i>
             <Profile />
 
             <main className="main">
                 <section className="filters container">
                     <ul className="filters__content">
-                        <button className="filters__button filter-tab-active" data-target="#projects">
+                        <button className={`filters__button ${activeTab}`} data-target="#projects">
                             {strings.tabs.projects}
                         </button>
                         <button className="filters__button" data-target="#skills">
@@ -119,5 +101,5 @@ export default function Page() {
                 </span>
             </footer>
         </>
-    )
+    );
 }
