@@ -8,6 +8,9 @@ import projectPic3 from "../assets/img/project3.jpg"
 import projectPic4 from "../assets/img/project4.jpg"
 import projectPic5 from "../assets/img/project5.jpg"
 import Profile from "@/components/profile";
+import Project from "@/components/project";
+import { strings } from "@/lib/strings.enUS";
+import SkillGroup from "@/components/skillGroup";
 
 export default function Page() {
     // /*=============== FILTERS TABS ===============*/
@@ -60,162 +63,70 @@ export default function Page() {
     //   localStorage.setItem('selected-icon', getCurrentIcon())
     // })
 
+    const projStrs = strings.projects;
+
+    const projects = []; // TODO: Populate
+    const skillGroup1 = [] // TODO: Populate
+    const skillGroup2 = [] // TODO: Populate
 
     return (
         <>
-            <i className="ri-moon-line change-theme" id="theme-button">Change theme</i>
+            <i className="ri-moon-line change-theme" id="theme-button">{strings.changeTheme}</i>
             <Profile />
 
             <main className="main">
                 <section className="filters container">
                     <ul className="filters__content">
                         <button className="filters__button filter-tab-active" data-target="#projects">
-                            Projects
+                            {strings.tabs.projects}
                         </button>
                         <button className="filters__button" data-target="#skills">
-                            Skills
+                            {strings.tabs.skills}
                         </button>
                     </ul>
 
                     <div className="filters__sections">
                         <div className="projects__content grid filters__active" data-content="" id="projects">
-                            <article className="projects__card">
-                                <Image src={projectPic1} alt="" className="projects__img"/>
 
-                                <div className="projects__modal">
-                                    <div>
-                                        <span className="projects__subtitle">CMS</span>
-                                        <h3 className="projects__title">College Management System</h3>
-                                        <a href="https://github.com/vaibhavtomar04/College_management_system_java"
-                                           className="projects__button button button__small">
-                                            <i className="ri-link"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article className="projects__card">
-                                <Image src={projectPic2} alt="" className="projects__img"/>
-
-                                <div className="projects__modal">
-                                    <div>
-                                        <span className="projects__subtitle">Web</span>
-                                        <h3 className="projects__title">Responsive Website</h3>
-                                        <a href="https://github.com/vaibhavtomar04/InteriorDesignsWebsite"
-                                           className="projects__button button button__small">
-                                            <i className="ri-link"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article className="projects__card">
-                                <Image src={projectPic3} alt="" className="projects__img"/>
-
-                                <div className="projects__modal">
-                                    <div>
-                                        <span className="projects__subtitle">sample</span>
-                                        <h3 className="projects__title">Empty</h3>
-                                        <a href="@/app/page#" className="projects__button button button__small">
-                                            <i className="ri-link"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article className="projects__card">
-                                <Image src={projectPic4} alt="" className="projects__img"/>
-
-                                <div className="projects__modal">
-                                    <div>
-                                        <span className="projects__subtitle">sample</span>
-                                        <h3 className="projects__title">Empty</h3>
-                                        <a href="@/app/page#" className="projects__button button button__small">
-                                            <i className="ri-link"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article className="projects__card">
-                                <Image src={projectPic5} alt="" className="projects__img"/>
-
-                                <div className="projects__modal">
-                                    <div>
-                                        <span className="projects__subtitle">sample</span>
-                                        <h3 className="projects__title">Empty</h3>
-                                        <a href="@/app/page#" className="projects__button button button__small">
-                                            <i className="ri-link"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
+                            <Project imageSrc={projectPic1}
+                                     title={projStrs.proj1.title}
+                                     subtitle={projStrs.proj1.subTitle}
+                                     projLink={projStrs.proj1.link}
+                            />
+                            <Project imageSrc={projectPic2}
+                                     title={projStrs.proj2.title}
+                                     subtitle={projStrs.proj2.subTitle}
+                                     projLink={projStrs.proj2.link}
+                            />
+                            <Project imageSrc={projectPic3}
+                                     title={projStrs.proj3.title}
+                                     subtitle={projStrs.proj3.subTitle}
+                                     projLink={projStrs.proj3.link}
+                            />
+                            <Project imageSrc={projectPic4}
+                                     title={projStrs.proj4.title}
+                                     subtitle={projStrs.proj4.subTitle}
+                                     projLink={projStrs.proj4.link}
+                            />
+                            <Project imageSrc={projectPic5}
+                                     title={projStrs.proj5.title}
+                                     subtitle={projStrs.proj5.subTitle}
+                                     projLink={projStrs.proj5.link}
+                            />
                         </div>
 
                         <div className="skills__content grid" data-content="" id="skills">
-                            <div className="skills__area">
-                                <h3 className="skills__title">Frontend Developer</h3>
-
-                                <div className="skills__box">
-                                    <div className="skills__group">
-                                        <div className="skills__data">
-                                            <i className="ri-checkbox-circle-line"></i>
-
-                                            <div>
-                                                <h3 className="skills__name">HTML</h3>
-                                                <span className="skills__level">Intermediate</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="skills__data">
-                                            <i className="ri-checkbox-circle-line"></i>
-
-                                            <div>
-                                                <h3 className="skills__name">CSS</h3>
-                                                <span className="skills__level">Intermediate</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="skills__data">
-                                            <i className="ri-checkbox-circle-line"></i>
-
-                                            <div>
-                                                <h3 className="skills__name">JavaScript</h3>
-                                                <span className="skills__level">Basic</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div className="skills__area">
-                                <h3 className="skills__title">Backend Developer</h3>
-
-                                <div className="skills__box">
-                                    <div className="skills__group">
-
-                                        <div className="skills__data">
-                                            <i className="ri-checkbox-circle-line"></i>
-
-                                            <div>
-                                                <h3 className="skills__name">MySQL</h3>
-                                                <span className="skills__level">Advance</span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                            <SkillGroup title={strings.skills.grp1.title} skills={skillGroup1} />
+                            <SkillGroup title={strings.skills.grp2.title} skills={skillGroup2} />
                         </div>
                     </div>
                 </section>
             </main>
 
             <footer className="footer container">
-            <span className="footer__copy">
-                &#169; Eric Shields. All rights reserved
-            </span>
+                <span className="footer__copy">
+                    {strings.copyright}
+                </span>
             </footer>
         </>
     )
