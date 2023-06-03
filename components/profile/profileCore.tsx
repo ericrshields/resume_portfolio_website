@@ -7,7 +7,7 @@ export default function ProfileCore() {
         <div className="profile__data">
             <div className="profile__border">
                 <div className="profile__perfil">
-                    <Image src={pic} alt={strings.profile.pictureAlt} />
+                    <Image src={pic} alt={strings.profile.pictureAlt} priority={true} />
                 </div>
             </div>
 
