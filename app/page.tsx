@@ -1,16 +1,15 @@
 'use client';
-
-import Image from "next/image";
+import { strings } from "@/lib/strings.enUS";
 
 import projectPic1 from "../assets/img/project1.jpg"
 import projectPic2 from "../assets/img/project2.jpg"
 import projectPic3 from "../assets/img/project3.jpg"
 import projectPic4 from "../assets/img/project4.jpg"
 import projectPic5 from "../assets/img/project5.jpg"
+
 import Profile from "@/components/profile";
-import Project from "@/components/project";
-import { strings } from "@/lib/strings.enUS";
-import SkillGroup from "@/components/skillGroup";
+import Project, { IProject } from "@/components/project";
+import SkillGroup, { ISkillGroup } from "@/components/skillGroup";
 
 export default function Page() {
     // /*=============== FILTERS TABS ===============*/
@@ -63,11 +62,27 @@ export default function Page() {
     //   localStorage.setItem('selected-icon', getCurrentIcon())
     // })
 
-    const projStrs = strings.projects;
+    const projStrs: IProject[]  = strings.projects;
+    const skillGroupStrs: ISkillGroup[] = strings.skills;
 
-    const projects = []; // TODO: Populate
-    const skillGroup1 = [] // TODO: Populate
-    const skillGroup2 = [] // TODO: Populate
+    const projPics = [projectPic1, projectPic2, projectPic3, projectPic4, projectPic5];
+    const projects = projStrs.map((project, index) => {
+        return (
+            <Project
+                imageSrc={projPics[index]}
+                key={index}
+                link={project.link}
+                subtitle={project.subtitle}
+                title={project.title}
+            />
+        )
+    });
+
+    const skillGroups = skillGroupStrs.map((skillGroup, index) => {
+        return (
+            <SkillGroup key={index} title={skillGroup.title} skills={skillGroup.skills} />
+        );
+    })
 
     return (
         <>
@@ -87,37 +102,11 @@ export default function Page() {
 
                     <div className="filters__sections">
                         <div className="projects__content grid filters__active" data-content="" id="projects">
-
-                            <Project imageSrc={projectPic1}
-                                     title={projStrs.proj1.title}
-                                     subtitle={projStrs.proj1.subTitle}
-                                     projLink={projStrs.proj1.link}
-                            />
-                            <Project imageSrc={projectPic2}
-                                     title={projStrs.proj2.title}
-                                     subtitle={projStrs.proj2.subTitle}
-                                     projLink={projStrs.proj2.link}
-                            />
-                            <Project imageSrc={projectPic3}
-                                     title={projStrs.proj3.title}
-                                     subtitle={projStrs.proj3.subTitle}
-                                     projLink={projStrs.proj3.link}
-                            />
-                            <Project imageSrc={projectPic4}
-                                     title={projStrs.proj4.title}
-                                     subtitle={projStrs.proj4.subTitle}
-                                     projLink={projStrs.proj4.link}
-                            />
-                            <Project imageSrc={projectPic5}
-                                     title={projStrs.proj5.title}
-                                     subtitle={projStrs.proj5.subTitle}
-                                     projLink={projStrs.proj5.link}
-                            />
+                            {projects}
                         </div>
 
                         <div className="skills__content grid" data-content="" id="skills">
-                            <SkillGroup title={strings.skills.grp1.title} skills={skillGroup1} />
-                            <SkillGroup title={strings.skills.grp2.title} skills={skillGroup2} />
+                            {skillGroups}
                         </div>
                     </div>
                 </section>

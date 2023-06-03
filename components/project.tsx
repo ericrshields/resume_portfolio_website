@@ -2,10 +2,13 @@ import Image from "next/image";
 
 export interface IProjectProps {
     imageSrc: string,
-    title: string,
+    key: number,
+    link: string
     subtitle: string,
-    projLink: string
+    title: string,
 }
+
+export type IProject = Omit<IProjectProps, "imageSrc" | "key">;
 
 export default function Project(props: IProjectProps) {
     return (
@@ -16,7 +19,7 @@ export default function Project(props: IProjectProps) {
                 <div>
                     <span className="projects__subtitle">{props.subtitle}</span>
                     <h3 className="projects__title">{props.title}</h3>
-                    <a href={props.projLink} className="projects__button button button__small">
+                    <a href={props.link} className="projects__button button button__small">
                         <i className="ri-link"></i>
                     </a>
                 </div>
