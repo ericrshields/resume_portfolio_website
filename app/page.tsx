@@ -1,6 +1,7 @@
 'use client';
 import { strings } from "@/lib/strings.enUS";
 
+// TODO: Update this to meaningful pictures
 import projectPic1 from "../assets/img/project1.jpg"
 import projectPic2 from "../assets/img/project2.jpg"
 import projectPic3 from "../assets/img/project3.jpg"
