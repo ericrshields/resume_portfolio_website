@@ -78,11 +78,12 @@ img {
 .change-theme {
   position: absolute;
   top: 1.5rem;
-  right: 0;
+  right: 1.5rem;
   font-size: 1.25rem;
   color: var(--title-color);
   cursor: pointer;
   transition: .3s;
+  z-index: 999;
 }
 
 .change-theme:hover {

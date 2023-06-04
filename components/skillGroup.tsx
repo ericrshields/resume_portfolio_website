@@ -1,5 +1,7 @@
 import { skillLevel } from "@/lib/strings.enUS";
 
+import { RiCheckboxBlankCircleLine } from "react-icons/ri"
+
 export type SkillLevel = typeof skillLevel;
 
 export interface ISkill {
@@ -21,7 +23,7 @@ export default function SkillGroup( props: ISkillGroupProps ) {
     const skills = props.skills.map((skill, index) => {
         return (
             <div key={index} className="skills__data">
-                <i className="ri-checkbox-circle-line">icon</i>
+                <RiCheckboxBlankCircleLine />
 
                 <div>
                     <h3 className="skills__name">{skill.name}</h3>

@@ -1,6 +1,8 @@
 'use client';
 import { strings } from "@/lib/strings.enUS";
 
+import { RiSunLine, RiMoonLine } from "react-icons/ri"
+
 // TODO: Update this to meaningful pictures
 import projectPic1 from "../assets/img/project1.jpg"
 import projectPic2 from "../assets/img/project2.jpg"
@@ -23,10 +25,10 @@ export default function Page() {
     /**
      * Theme handling
      */
-    const [ selectedTheme, setSelectedTheme ] = useState(localStorage.getItem('selected-theme') || "dark-theme");
-    const themeIconClass = selectedTheme === MAGIC_STRINGS.LIGHT_THEME ? "ri-sun-line" : "ri-moon-line";
+    const initialTheme = localStorage.getItem('selected-theme') || "dark-theme";
+    const [ selectedTheme, setSelectedTheme ] = useState(initialTheme);
     // TODO: Update this to use the same style as tabHandler?
-    const themeHandler: MouseEventHandler<HTMLButtonElement> = () => {
+    const themeHandler: MouseEventHandler<HTMLDivElement> = () => {
         if (selectedTheme === MAGIC_STRINGS.DARK_THEME) {
             setSelectedTheme(MAGIC_STRINGS.LIGHT_THEME);
             localStorage.setItem(MAGIC_STRINGS.SELECTED_THEME, MAGIC_STRINGS.LIGHT_THEME);
@@ -102,7 +104,12 @@ export default function Page() {
      */
     return (
         <>
-            <i className={`${themeIconClass} change-theme`} onClick={themeHandler}>{strings.changeTheme}</i>
+            <div className={"change-theme"} onClick={themeHandler}>
+                {selectedTheme === MAGIC_STRINGS.DARK_THEME ?
+                <RiSunLine /> :
+                <RiMoonLine />
+                }
+            </div>
             <Profile />
 
             <main className="main">

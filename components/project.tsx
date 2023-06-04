@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { RiLink } from "react-icons/ri"
+
 export interface IProjectProps {
     imageSrc: string,
     key: number,
@@ -20,7 +22,7 @@ export default function Project(props: IProjectProps) {
                     <span className="projects__subtitle">{props.subtitle}</span>
                     <h3 className="projects__title">{props.title}</h3>
                     <a href={props.link} className="projects__button button button__small">
-                        <i className="ri-link"></i>
+                        <RiLink />
                     </a>
                 </div>
             </div>

@@ -1,3 +1,5 @@
+import { RiLinkedinBoxLine, RiGithubLine } from "react-icons/ri"
+
 import Image from "next/image";
 import pic from "@/assets/img/professional-headshot.jpg";
 import {links, strings} from "@/lib/strings.enUS"
@@ -16,10 +18,10 @@ export default function ProfileCore() {
 
             <ul className="profile__social">
                 <a href={links.linkedin} target="_blank" className="profile__social-link">
-                    <i className="ri-linkedin-box-line">{strings.social.linkedIn}</i>
+                    <RiLinkedinBoxLine />
                 </a>
                 <a href={links.github} target="_blank" className="profile__social-link">
-                    <i className="ri-github-line">{strings.social.github}</i>
+                    <RiGithubLine />
                 </a>
             </ul>
         </div>
