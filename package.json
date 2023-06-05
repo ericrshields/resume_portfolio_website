@@ -24,5 +24,8 @@
     "eslint-config-next": "13.4.3",
     "postcss": "8.4.23",
     "sass": "^1.62.1"
+  },
+  "eslintConfig": {
+    "extends": [ "next/core-web-vitals" ]
   }
 }

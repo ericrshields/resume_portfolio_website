@@ -47,8 +47,8 @@ export default function Page() {
      * Theme handling
      */
     const [ activeTab, setActiveTab ] = useState("projects");
-    const tabHandler: MouseEventHandler<HTMLButtonElement> = (e ) => {
-        setActiveTab(e.currentTarget.getAttribute("data-target"));
+    const tabHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
+        setActiveTab(e.currentTarget.getAttribute("data-target") || "");
     };
 
     // Moving these outside the useEffect call because they will never change
