@@ -1,7 +1,6 @@
 'use client';
-import { strings } from "@/lib/strings.enUS";
 
-import { RiSunLine, RiMoonLine } from "react-icons/ri"
+import { strings } from "@/lib/strings.enUS";
 
 // TODO: Update this to meaningful pictures
 import projectPic1 from "../assets/img/project1.jpg"
@@ -15,33 +14,11 @@ import Project, { IProject } from "@/components/project";
 import SkillGroup, { ISkillGroup } from "@/components/skillGroup";
 import { MouseEventHandler, useEffect, useState } from "react";
 
-const MAGIC_STRINGS = {
-    DARK_THEME: "dark-theme",
-    LIGHT_THEME: "light-theme",
-    SELECTED_THEME: "selected-theme",
-}
+// Theme switcher uses localStorage, so disable server side rendering to prevent hydration errors
+import dynamic from "next/dynamic";
+const ThemeSwitch = dynamic(() => import("@/components/themeSwitch"), { ssr: false });
 
 export default function Page() {
-    /**
-     * Theme handling
-     */
-    const initialTheme = localStorage.getItem('selected-theme') || "dark-theme";
-    const [ selectedTheme, setSelectedTheme ] = useState(initialTheme);
-    // TODO: Update this to use the same style as tabHandler?
-    const themeHandler: MouseEventHandler<HTMLDivElement> = () => {
-        if (selectedTheme === MAGIC_STRINGS.DARK_THEME) {
-            setSelectedTheme(MAGIC_STRINGS.LIGHT_THEME);
-            localStorage.setItem(MAGIC_STRINGS.SELECTED_THEME, MAGIC_STRINGS.LIGHT_THEME);
-
-            // Updating the body class requires a different approach, since moving this code into layout.tsx
-            // would require making the core layout a Client component, which causes other issues
-            document.body.classList.replace(MAGIC_STRINGS.DARK_THEME, MAGIC_STRINGS.LIGHT_THEME);
-        } else {
-            setSelectedTheme(MAGIC_STRINGS.DARK_THEME);
-            localStorage.setItem(MAGIC_STRINGS.SELECTED_THEME, MAGIC_STRINGS.DARK_THEME);
-            document.body.classList.replace(MAGIC_STRINGS.LIGHT_THEME, MAGIC_STRINGS.DARK_THEME);
-        }
-    }
 
     /**
      * Theme handling
@@ -51,13 +28,11 @@ export default function Page() {
         setActiveTab(e.currentTarget.getAttribute("data-target") || "");
     };
 
-    // Moving these outside the useEffect call because they will never change
-    // Adding them to deps to make the linter happy
-    const tabButtons: NodeListOf<HTMLButtonElement> =
-        document.querySelectorAll(".filters [data-target]");
-    const tabContainers: NodeListOf<HTMLDivElement> =
-        document.querySelectorAll(".filters [data-content]");
     useEffect(() => {
+        const tabButtons: NodeListOf<HTMLButtonElement> =
+            document.querySelectorAll(".filters [data-target]");
+        const tabContainers: NodeListOf<HTMLDivElement> =
+            document.querySelectorAll(".filters [data-content]");
         tabButtons.forEach((btn) => {
             btn.classList.toggle(
                 "filter-tab-active",
@@ -72,7 +47,7 @@ export default function Page() {
                 === activeTab
             );
         })
-    }, [tabButtons, tabContainers, activeTab]);
+    }, [activeTab]);
 
     /**
      * Create Projects and Skills from locale strings
@@ -104,12 +79,8 @@ export default function Page() {
      */
     return (
         <>
-            <div className={"change-theme"} onClick={themeHandler}>
-                {selectedTheme === MAGIC_STRINGS.DARK_THEME ?
-                <RiSunLine /> :
-                <RiMoonLine />
-                }
-            </div>
+            <ThemeSwitch />
+
             <Profile />
 
             <main className="main">

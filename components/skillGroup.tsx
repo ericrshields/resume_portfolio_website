@@ -2,11 +2,9 @@ import { skillLevel } from "@/lib/strings.enUS";
 
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 
-export type SkillLevel = typeof skillLevel;
-
 export interface ISkill {
     name: string,
-    level: SkillLevel,
+    level: string,
 }
 
 export interface ISkillGroupProps {

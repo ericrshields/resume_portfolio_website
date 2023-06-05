@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import { RiLink } from "react-icons/ri"
 
 export interface IProjectProps {
-    imageSrc: string,
+    imageSrc: StaticImageData,
     key: number,
     link: string
     subtitle: string,
