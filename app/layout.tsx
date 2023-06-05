@@ -18,9 +18,9 @@ export default function RootLayout() {
     // Suppress hydration errors on <body>, as these come from extensions and can be ignored
     return (
         <html lang="en">
-        <body className={`${inter.className} dark-theme`} suppressHydrationWarning={true}>
-            <Page />
-        </body>
+            <body className={`${inter.className} dark-theme`} suppressHydrationWarning={true}>
+                <Page />
+            </body>
         </html>
     )
 }

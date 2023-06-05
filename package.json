@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint && tsc --pretty",
+    "lintFix": "next lint --fix",
+    "prepare": "husky install",
+    "test": ""
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
@@ -22,10 +25,19 @@
     "@types/react-dom": "18.2.4",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "husky": "^8.0.0",
     "postcss": "8.4.23",
     "sass": "^1.62.1"
   },
   "eslintConfig": {
-    "extends": [ "next/core-web-vitals" ]
+    "extends": [
+      "next/core-web-vitals"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ]
+    }
   }
 }
