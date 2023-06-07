@@ -23,7 +23,7 @@ export default function Page() {
     /**
      * Theme handling
      */
-    const [ activeTab, setActiveTab ] = useState("projects");
+    const [ activeTab, setActiveTab ] = useState("skills");
     const tabHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
         setActiveTab(e.currentTarget.getAttribute("data-target") || "");
     };
@@ -86,11 +86,11 @@ export default function Page() {
             <main className="main">
                 <section className="filters container">
                     <ul className="filters__content">
-                        <button className="filters__button" onClick={tabHandler} data-target="projects">
-                            {strings.tabs.projects}
-                        </button>
                         <button className="filters__button" onClick={tabHandler} data-target="skills">
                             {strings.tabs.skills}
+                        </button>
+                        <button className="filters__button" onClick={tabHandler} data-target="projects">
+                            {strings.tabs.projects}
                         </button>
                     </ul>
 

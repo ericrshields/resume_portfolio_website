@@ -15,7 +15,6 @@ export interface ISkillGroupProps {
 
 export type ISkillGroup = Omit<ISkillGroupProps, "key">;
 
-// TODO: Hydrate with prop values - need to iterate over skills
 export default function SkillGroup( props: ISkillGroupProps ) {
     // TODO: convert to ul/li
     const skills = props.skills.map((skill, index) => {
