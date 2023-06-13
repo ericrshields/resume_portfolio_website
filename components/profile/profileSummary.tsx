@@ -1,34 +1,29 @@
-import {strings, yearNumbers} from "@/lib/strings.enUS"
+import { strings } from "@/lib/strings.enUS"
+
+interface FieldOfWork {
+    name: string,
+    years: number,
+}
 
 export default function ProfileSummary() {
+    const yearStrings: FieldOfWork[] = strings.profile.fieldsOfWork;
 
-    // TODO: DRY this
+    const yearBlocks = yearStrings.map((field, index) => {
+        return (
+            <div key={index} className="profile__info-group">
+                <h3 className="profile__info-number">
+                    {field.name}
+                </h3>
+                <p className="profile__info-description">
+                    {field.years}
+                </p>
+            </div>
+        );
+    });
+
     return (
         <div className="profile__info grid">
-            <div className="profile__info-group">
-                <h3 className="profile__info-number">
-                    {yearNumbers.work}
-                </h3>
-                <p className="profile__info-description">
-                    {strings.profile.yearsOfWork}
-                </p>
-            </div>
-            <div className="profile__info-group">
-                <h3 className="profile__info-number">
-                    {yearNumbers.front}
-                </h3>
-                <p className="profile__info-description">
-                    {strings.profile.yearsOfFrontEnd}
-                </p>
-            </div>
-            <div className="profile__info-group">
-                <h3 className="profile__info-number">
-                    {yearNumbers.full}
-                </h3>
-                <p className="profile__info-description">
-                    {strings.profile.yearsOfFullStack}
-                </p>
-            </div>
+            {yearBlocks}
         </div>
-    )
+    );
 }
