@@ -17,10 +17,10 @@ export default function ProfileCore() {
             <h3 className="profile__profession">{strings.profile.byline}</h3>
 
             <ul className="profile__social">
-                <a href={links.linkedin} target="_blank" className="profile__social-link">
+                <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="profile__social-link">
                     <RiLinkedinBoxLine />
                 </a>
-                <a href={links.github} target="_blank" className="profile__social-link">
+                <a href={links.github} target="_blank" rel="noopener noreferrer" className="profile__social-link">
                     <RiGithubLine />
                 </a>
             </ul>
