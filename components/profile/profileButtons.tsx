@@ -11,7 +11,7 @@ export default function profileButtons() {
             </a>
 
             <div className="profile__buttons-small">
-                <a href={links.email} target="_blank" className="button button__small button__gray">
+                <a href={links.email} target="_blank" rel="noopener noreferrer" className="button button__small button__gray">
                     <RiMailLine />
                 </a>
             </div>

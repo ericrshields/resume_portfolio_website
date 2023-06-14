@@ -21,7 +21,7 @@ export default function Project(props: IProjectProps) {
                 <div>
                     <span className="projects__subtitle">{props.subtitle}</span>
                     <h3 className="projects__title">{props.title}</h3>
-                    <a href={props.link} className="projects__button button button__small">
+                    <a href={props.link} target="_blank" rel="noopener noreferrer" className="projects__button button button__small">
                         <RiLink />
                     </a>
                 </div>
