@@ -1,6 +1,6 @@
 'use strict';
 
-import '@/assets/css/styles.css'
+import '@/assets/scss/styles.scss'
 
 import { Metadata } from "next";
 import { Inter } from 'next/font/google'
