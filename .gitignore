@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# WSL files created on drag & drop from windows. Slightly unsafe, but very unlikely to conflict
+*:*
