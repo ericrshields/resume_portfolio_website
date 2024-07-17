@@ -18,7 +18,7 @@ Platform
 Languages
 * React.js
 * TypeScript
-* Currently, using the compiled HTML and CSS from Tomar's project without much modification
+* Currently, using the compiled HTML and SCSS from Tomar's project without much modification
 * Server side is handled by Next.js for now
 
 Hosting
@@ -32,7 +32,7 @@ Project Management
 
 ## Future
 You can see many of the plans via the [Project](https://github.com/users/ericrshields/projects/1/views/2), but I'll give an overview here.  Who knows if I'll have enough free time to do them all, but I'll try!
-* Replace the compiled CSS with a CSS framework and heavily customize the styles
+* Heavily customize the styles
 * Add additional content, like recommendations, experience, and a summary
 * Explore more advanced aspects of the code infrastructure like eslint customization, web analytics, advanced git hooks, etc
 * Add testing, both unit and UI/integration
